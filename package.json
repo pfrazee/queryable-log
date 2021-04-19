@@ -1,0 +1,26 @@
+{
+  "name": "queryable-log",
+  "version": "1.0.0",
+  "description": "A structured append-only log which can be queried. Stores as ndjson and applies a log-size limit.",
+  "main": "index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pfrazee/queryable-log.git"
+  },
+  "scripts": {
+    "test": "ava"
+  },
+  "author": "Paul Frazee <pfrazee@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "concat-stream": "^2.0.0",
+    "ndjson": "^2.0.0",
+    "pump": "^3.0.0",
+    "through2": "^4.0.2"
+  },
+  "devDependencies": {
+    "ava": "^3.15.0",
+    "tmp-promise": "^3.0.2"
+  }
+}
