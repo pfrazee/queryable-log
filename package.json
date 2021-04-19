@@ -1,6 +1,6 @@
 {
   "name": "queryable-log",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A structured append-only log which can be queried. Stores as ndjson and applies a log-size limit.",
   "main": "index.js",
   "type": "module",
