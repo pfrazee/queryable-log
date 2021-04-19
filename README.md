@@ -36,9 +36,9 @@ await log.query(obj => obj.type === 'banana') /* => [
 
 ## API
 
-### `new QueryableLog(filepath[, {sizeLimit}])`
+### `new QueryableLog(filepath[, {sizeLimit, overwrite}])`
 
-The `sizeLimit` defaults to 5mb.
+The `sizeLimit` defaults to 5mb. The `overwrite` flag will delete the existing log on open; it defaults to false.
 
 ### `await log.append(obj)`
 

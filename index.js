@@ -7,11 +7,13 @@ import ndjson from 'ndjson'
 const DEFAULT_SIZE_LIMIT = 5e6
 
 export class QueryableLog {
-  constructor (filepath, {sizeLimit} = {sizeLimit: DEFAULT_SIZE_LIMIT}) {
+  constructor (filepath, {overwrite, sizeLimit} = {overwrite: false, sizeLimit: DEFAULT_SIZE_LIMIT}) {
     this.filepath = filepath
     this.writeStream = undefined
     this.estimatedSize = 0
     this.sizeLimit = sizeLimit
+    this.overwrite = overwrite
+    this._firstOpen = true
   }
 
   async append (obj) {
@@ -81,7 +83,9 @@ export class QueryableLog {
 
   async _open () {
     if (!this.writeStream) {
-      this.writeStream = await fs.createWriteStream(this.filepath, {flags: 'a'})
+      const flags = (this._firstOpen && this.overwrite) ? 'w' : 'a'
+      this._firstOpen = false
+      this.writeStream = await fs.createWriteStream(this.filepath, {flags})
     }
   }
 }
